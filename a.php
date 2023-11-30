@@ -1,0 +1,19 @@
+<?php
+ 
+function detectExeFiles($directoryPath) {
+    $directory = new \DirectoryIterator($directoryPath);
+ 
+    echo "Detected .exe files:\n";
+    foreach ($directory as $fileInfo) {
+        if ($fileInfo->isFile() && strtolower(pathinfo($fileInfo->getFilename(), PATHINFO_EXTENSION)) === 'exe') {
+            echo $fileInfo->getFilename() . "\n";
+        }
+    }
+}
+ 
+// Specify the directory you want to search for .exe files
+$directoryToSearch = '/path/to/your/directory';
+ 
+// Call the function to detect .exe files
+detectExeFiles($directoryToSearch);
+?>
